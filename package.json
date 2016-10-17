@@ -1,0 +1,34 @@
+{
+  "name": "pokerintel",
+  "version": "1.0.0",
+  "description": "App for Poker players",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Noforv/pokerintel.git"
+  },
+  "keywords": [
+    "poker",
+    "intel"
+  ],
+  "author": "Nofor, Zuuuttt, Eddy",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Noforv/pokerintel/issues"
+  },
+  "homepage": "https://github.com/Noforv/pokerintel#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.10",
+    "mongoose": "^4.6.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
