@@ -39,16 +39,25 @@ router.post('/user/create', (req, res) => {
 })
 
 router.get('/user/:username', (req, res) => {
+//<<<<<<< HEAD
 	User.findUser(req.params.username, (err, result) => {
 		res.render('userprofile.ejs', {user:result})
 	})
+//=======
+    User.findUser(req.params.username, function(result) {
+        res.render('userprofile.ejs', {
+            user: result
+        })
+    })
+//>>>>>>> bdfdb03e39c8866a1c1af085ba519fb29810454c
 })
 
-router.get('/user/session/new', (req, res) =>{
-	res.render('createpokersession')
+router.get('/user/session/new', (req, res) => {
+    res.render('createpokersession')
 })
 
 router.post('/user/:username/session/create', (req, res) => {
+//<<<<<<< HEAD
 	var sessionObj ={
 		username:req.params.username,
 		venue:req.body.venue,
@@ -69,3 +78,28 @@ router.get('/user/:username/session/list', (req, res) => {
 		res.render('userpokersessions.ejs', {sessions: result})
 	})
 })
+//=======
+    var sessionObj = {
+        username: req.params.username,
+        venue: req.body.venue,
+        variant: req.body.variant,
+        blinds: req.body.blinds,
+        buyin: req.body.buyin,
+        cashout: req.body.cashout,
+        start: req.body.start,
+        end: req.body.end
+    }
+    Session.insertSession(sessionObj, function() {
+        res.redirect('/user/' + req.params.username)
+    })
+})
+
+router.get('/user/:username/session/list', (req, res) => {
+    Session.getSessions(reg.params.username, function(result) {
+        res.render('userpokersessions.ejs', {
+            sessions: result
+        })
+    })
+})
+module.exports = router
+//>>>>>>> bdfdb03e39c8866a1c1af085ba519fb29810454c
