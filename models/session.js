@@ -6,7 +6,7 @@ const User=models.User;
 
 
 exports.insertSession=(sessionObj,cb)=> {
-    let session=Session(sessionObj);
+    var session=Session(sessionObj);
     
     session.save((err)=>{
         if (err) throw err;

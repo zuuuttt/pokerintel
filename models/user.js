@@ -1,7 +1,7 @@
 const session=require('./session.js');
 const models=require('./models.js');
 
-let testSession={    
+var testSession={    
     username: 'zuuudddttssst',
     venue: 'Viage',
     variant: 'NLHE',
@@ -22,7 +22,7 @@ session.getSessions((sessions)=> {
 
 exports.insertUser=(userObj)=> {
     
-    let user=User(userObj);
+    var user=User(userObj);
     user.save((err)=> {
         if(err) throw err;
         console.log("Done");

@@ -1,13 +1,13 @@
-let mongoose = require('mongoose');
+var mongoose = require('mongoose');
 mongoose.connect('mongodb://pokerintel:poker1tel@ds017256.mlab.com:17256/pokerintel');
 
-let db = mongoose.connection;
+var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', ()=> {
     exports.db=db;
 });
 
-let sessionSchema = new mongoose.Schema({
+var sessionSchema = new mongoose.Schema({
   
     
     username: { type: String, required: true, unique: true },
@@ -24,7 +24,7 @@ let sessionSchema = new mongoose.Schema({
     
 });
 
-let userSchema=new mongoose.Schema({
+var userSchema=new mongoose.Schema({
     username: { type: String, required: true, unique: true },
     name: {type: String}
 })
