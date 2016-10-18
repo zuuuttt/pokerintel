@@ -16,20 +16,38 @@ var testSession={
     console.log(session);
 })*/
 
-session.getSessions((sessions)=> {
+/*session.getSessions((sessions)=> {
     console.log(sessions);
-})
+})*/
 
-exports.insertUser=(userObj)=> {
+exports.insertUser=(userObj,cb)=> {
     
     var user=User(userObj);
     user.save((err)=> {
         if(err) throw err;
         console.log("Done");
     });
-    //Takes user object to be inserted into database
-    //returns inserted object if sucessful insert
-    //else returns error if userObj does not meet
-    //schema criteria
+    cb();
+   
+}
+
+exports.findUser(username,cb) {
+  User.find({ username: username }, (err, user) =>{
+  if (err) throw err;
+
+  // object of the user
+  console.log(user);
+      cb();
+});  
+}
+
+
+exports.getAllUsers=(cb)=>{
+    
+    User.find({},(err,users)=>{
+        if(err) throw err;
+        cb(users);
+    });
+    
 }
     

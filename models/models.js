@@ -1,12 +1,12 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://pokerintel:poker1tel@ds017256.mlab.com:17256/pokerintel');
 
-var db = mongoose.connection;
+/*var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', ()=> {
     exports.db=db;
-});
 
+});*/
 var sessionSchema = new mongoose.Schema({
   
     
