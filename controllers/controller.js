@@ -39,7 +39,7 @@ router.post('/user/create', (req, res) => {
 })
 
 router.get('/user/:username', (req, res) => {
-	User.findUser(req.params.username, function(result) => {
+	User.findUser(req.params.username, (err, result) => {
 		res.render('userprofile.ejs', {user:result})
 	})
 })
@@ -59,13 +59,13 @@ router.post('/user/:username/session/create', (req, res) => {
 		start: req.body.start,
 		end: req.body.end
 	}
-	Session.insertSession(sessionObj, function()=>{
+	Session.insertSession(sessionObj, ()=>{
 		res.redirect('/user/'+req.params.username)
 	})
 })
 
 router.get('/user/:username/session/list', (req, res) => {
-	Session.getSessions(reg.params.username, function(result)=>{
+	Session.getSessions(reg.params.username, (result)=>{
 		res.render('userpokersessions.ejs', {sessions: result})
 	})
 })
