@@ -39,33 +39,38 @@ router.post('/user/create', (req, res) => {
 })
 
 router.get('/user/:username', (req, res) => {
-	User.findUser(req.params.username, function(result) => {
-		res.render('userprofile.ejs', {user:result})
-	})
+    User.findUser(req.params.username, function(result) {
+        res.render('userprofile.ejs', {
+            user: result
+        })
+    })
 })
 
-router.get('/user/session/new', (req, res) =>{
-	res.render('createpokersession')
+router.get('/user/session/new', (req, res) => {
+    res.render('createpokersession')
 })
 
 router.post('/user/:username/session/create', (req, res) => {
-	var sessionObj ={
-		username:req.params.username,
-		venue:req.body.venue,
-		variant:req.body.variant,
-		blinds: req.body.blinds,
-		buyin: req.body.buyin,
-		cashout: req.body.cashout,
-		start: req.body.start,
-		end: req.body.end
-	}
-	Session.insertSession(sessionObj, function()=>{
-		res.redirect('/user/'+req.params.username)
-	})
+    var sessionObj = {
+        username: req.params.username,
+        venue: req.body.venue,
+        variant: req.body.variant,
+        blinds: req.body.blinds,
+        buyin: req.body.buyin,
+        cashout: req.body.cashout,
+        start: req.body.start,
+        end: req.body.end
+    }
+    Session.insertSession(sessionObj, function() {
+        res.redirect('/user/' + req.params.username)
+    })
 })
 
 router.get('/user/:username/session/list', (req, res) => {
-	Session.getSessions(reg.params.username, function(result)=>{
-		res.render('userpokersessions.ejs', {sessions: result})
-	})
+    Session.getSessions(reg.params.username, function(result) {
+        res.render('userpokersessions.ejs', {
+            sessions: result
+        })
+    })
 })
+module.exports = router
