@@ -5,7 +5,7 @@
     <% include partials/head %>
 </head>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" style="background-color: #19aff5;">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -15,13 +15,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Pokerintel</a>
+      <a class="navbar-brand poker" href="/">POKERINTEL</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/" class="btn btn-primary">Sign In</a></li>
+        <li><a href="/" class="" style="color: white; background-color:#19aff5; font-size: 18px; font-weight: 600;">Sign In</a></li>
       </ul>
     </div>
   </div>
@@ -30,7 +30,7 @@
 <div class="container">
     <div class="row" style="text-align:center;">
         <h3>POKER INTEL APPLICATION USER SIGN UP</h3>
-    </div>
+    </div><br><br>
     
     <div class="row signup">
         <div class="row">
@@ -38,16 +38,16 @@
         </div>
         
         
-        <form action="/signup" method="post" class=".form-horizontal"> 
+        <form action="/createuser" method="post" class=".form-horizontal"> 
                         
-          <div class="row form-group ">
+          <div class="row form-group input_group">
                <label for="" class="col-sm-2">Username:</label>
                <div class="col-sm-10">
                   <input type="text" name="username" id="username" class="form-control"> 
                </div>
            </div>
                          
-           <div class="row form-group ">
+           <div class="row form-group input_group">
                <label for="" class="col-sm-2">Fullname:</label>
                <div class="col-sm-10">
                   <input type="text" name="fullname" id="fullname" class="form-control"> 
