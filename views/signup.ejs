@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Partials to hold the contents in the head tag -->
+    <% include partials/head %>
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Pokerintel</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/" class="btn btn-primary">Sign In</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container">
+    <div class="row" style="text-align:center;">
+        <h3>POKER INTEL APPLICATION USER SIGN UP</h3>
+    </div>
+    
+    <div class="row signup">
+        <div class="row">
+            <h3>Welcome, Please Sign Up</h3>
+        </div>
+        
+        
+        <form action="/signup" method="post" class=".form-horizontal"> 
+                        
+          <div class="row form-group ">
+               <label for="" class="col-sm-2">Username:</label>
+               <div class="col-sm-10">
+                  <input type="text" name="username" id="username" class="form-control"> 
+               </div>
+           </div>
+                         
+           <div class="row form-group ">
+               <label for="" class="col-sm-2">Fullname:</label>
+               <div class="col-sm-10">
+                  <input type="text" name="fullname" id="fullname" class="form-control"> 
+               </div>
+           </div>
+           
+           <div class="row form-group" style="margin: 0px 10px 20px 10px;">
+               <div class="col-xs-12">
+                  <input type="submit" name="submit" id="submit" class="form-control"> 
+               </div>
+           </div>
+            
+        </form>
+        
+    </div>
+    
+</div>
+
+  
+<!-- Partials to hold the javascript links -->
+<% include partials/scripts %>  
+</body>
+</html>
