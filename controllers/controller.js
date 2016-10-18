@@ -39,17 +39,17 @@ router.post('/user/create', (req, res) => {
 })
 
 router.get('/user/:username', (req, res) => {
-//<<<<<<< HEAD
+
 	User.findUser(req.params.username, (err, result) => {
 		res.render('userprofile.ejs', {user:result})
 	})
-//=======
+
     User.findUser(req.params.username, function(result) {
         res.render('userprofile.ejs', {
             user: result
         })
     })
-//>>>>>>> bdfdb03e39c8866a1c1af085ba519fb29810454c
+
 })
 
 router.get('/user/session/new', (req, res) => {
@@ -57,7 +57,7 @@ router.get('/user/session/new', (req, res) => {
 })
 
 router.post('/user/:username/session/create', (req, res) => {
-//<<<<<<< HEAD
+
 	var sessionObj ={
 		username:req.params.username,
 		venue:req.body.venue,
@@ -77,8 +77,7 @@ router.get('/user/:username/session/list', (req, res) => {
 	Session.getSessions(reg.params.username, (result)=>{
 		res.render('userpokersessions.ejs', {sessions: result})
 	})
-//})
-//=======
+
     var sessionObj = {
         username: req.params.username,
         venue: req.body.venue,
@@ -102,4 +101,4 @@ router.get('/user/:username/session/list', (req, res) => {
     })
 });
 module.exports = router
-//>>>>>>> bdfdb03e39c8866a1c1af085ba519fb29810454c
+

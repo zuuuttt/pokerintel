@@ -1,5 +1,6 @@
 const session = require('./session.js');
 const models = require('./models.js');
+const User = models.User
 
 var testSession = {
     username: 'zuuudddttssst',
