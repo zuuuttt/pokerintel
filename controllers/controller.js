@@ -77,7 +77,7 @@ router.get('/user/:username/session/list', (req, res) => {
 	Session.getSessions(reg.params.username, (result)=>{
 		res.render('userpokersessions.ejs', {sessions: result})
 	})
-})
+//})
 //=======
     var sessionObj = {
         username: req.params.username,
@@ -100,6 +100,6 @@ router.get('/user/:username/session/list', (req, res) => {
             sessions: result
         })
     })
-})
+});
 module.exports = router
 //>>>>>>> bdfdb03e39c8866a1c1af085ba519fb29810454c
