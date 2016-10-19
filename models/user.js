@@ -42,7 +42,8 @@ exports.findUser = (username, cb) => {
 
         // object of the user
         console.log(user);
-        cb(user);
+        console.log(user.username);
+        cb(null,user);
     });
 }
 

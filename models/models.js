@@ -1,6 +1,12 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://pokerintel:poker1tel@ds017256.mlab.com:17256/pokerintel');
+mongoose.connect('mongodb://pokerintel:poker1tel@ds017256.mlab.com:17256/pokerintel',function(err) {
+    if (err) {
+        console.err(err);
+    } else {
+        console.log('Connected');
+    }    
 
+ });
 
 var sessionSchema = new mongoose.Schema({
 
@@ -74,6 +80,8 @@ sessionSchema.pre('save', function(next) {
     this.time=this.end-this.start;
     
     
+    next();
+    
 });
 
 
@@ -81,4 +89,4 @@ exports.Session=mongoose.model('Session', sessionSchema);
 exports.User=mongoose.model('User', userSchema);
 
 
-   
+  

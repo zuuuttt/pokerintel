@@ -1,5 +1,6 @@
 const models=require('./models');
 const Session=models.Session;
+const sessions=require('./session.js')
     
     
     
@@ -19,7 +20,7 @@ fs.readFile('parsecg.csv', 'utf8', function(err, data) {
     
     for(let i=1; i<arr.length; i++) {
         let fields=arr[i].split(';');
-        let sessionObj={user: 'zuuuttt'};
+        let sessionObj={username: 'zuuuttt'};
         for(let i=0; i<fields.length; i++) {
             
             sessionObj[props[i]]=fields[i];
@@ -35,11 +36,18 @@ fs.readFile('parsecg.csv', 'utf8', function(err, data) {
         
         sessionObj.profit=sessionObj.cashout-sessionObj.buyin;
         sessionObj.duration=sessionObj.end-sessionObj.start;
-        
-        console.log(sessionObj);
         sessions_arr.push(sessionObj);
+        
     }
-    
+   
+    for(let i=0; i<sessions_arr.length; i++) {
+//        console.log(sessions_arr[i]);
+//        console.log(sessions);
+        sessions.insertSession(sessions_arr[i],(session)=>{
+           // console.log(session)
+            
+        })
+    }
 });
 function parseBlinds(str) {
     re=/[0-9]{1,2}/g;
