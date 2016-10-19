@@ -2,6 +2,7 @@ const session = require('./session.js');
 const models = require('./models.js');
 const User = models.User
 
+
 var testSession = {
     username: 'zuuudddttssst',
     venue: 'Viage',
@@ -13,18 +14,21 @@ var testSession = {
     end: new Date(2016, 10, 18, 21, 00)
 }
 
-/*session.insertSession(testSession,(session)=>{
-    console.log(session);
-})*/
 
-/*session.getSessions((sessions)=> {
-    console.log(sessions);
-})*/
+
+
+
+exports.getTotalPlay=(username)=> {
+    //takes username and returns total time played
+    //for username across all sessions played
+}
 
 exports.insertUser = (userObj, cb) => {
-
+    
+    userObj.name='test';
+    console.log(userObj);
     var user = User(userObj);
-    User.save((err) => {
+    user.save((err) => {
         if (err) throw err;
         console.log("Done");
     });

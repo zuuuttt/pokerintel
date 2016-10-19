@@ -15,28 +15,28 @@ exports.insertSession=(sessionObj,cb)=> {
     
 }
 
-exports.getSessions=(cb)=>{
+exports.getSessions=(search,cb)=>{
     
     
-    Session.find({},(err,sessions)=>{
+    Session.find(search || {},(err,sessions)=>{
         if(err) throw err;
         cb(sessions);
     });
     
 }
 
-
-
-
-exports.getTotalProfit=(username)=> {
-    //takes username and returns total profit
-    //for user name across all sessions played
+exports.getTotalProfit=(username,cb)=> {
+    Session.find(user,(sessions)=>{
+        let totalprofit=sessions.reduce((prev,curr)=> {
+            return prev+curr;
+        });
+        cb(totalprofit);
+    });
 }
 
-exports.getTotalPlay=(username)=> {
-    //takes username and returns total time played
-    //for username across all sessions played
-}
+
+
+
 
 
 
