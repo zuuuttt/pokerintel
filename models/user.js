@@ -51,6 +51,7 @@ exports.getAllUsers = (cb) => {
 
     User.find({}, (err, users) => {
         if (err) throw err;
+        console.log(users);
         cb(users);
     });
 
