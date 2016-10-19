@@ -44,11 +44,11 @@ router.get('/user/:username', (req, res) => {
 		res.render('userprofile.ejs', {user:result})
 	})
 
-    User.findUser(req.params.username, function(result) {
-        res.render('userprofile.ejs', {
-            user: result
-        })
-    })
+    // User.findUser(req.params.username, function(result) {
+    //     res.render('userprofile.ejs', {
+    //         user: result
+    //     })
+    // })
 
 })
 

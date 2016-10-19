@@ -37,9 +37,7 @@ exports.insertUser = (userObj, cb) => {
 }
 
 exports.findUser = (username, cb) => {
-    User.find({
-        username: username
-    }, (err, user) => {
+    User.find({username: username}, (err, user) => {
         if (err) throw err;
 
         // object of the user
