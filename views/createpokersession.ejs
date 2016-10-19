@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Partials to hold the contents in the head tag -->
+    <% include partials/head %>
+</head>
+<body>
+<nav class="navbar navbar-default" style="background-color: #19aff5;">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand poker" href="/">POKERINTEL</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/" class="" style="color: white; background-color:#19aff5; font-size: 18px; font-weight: 600;">View Session</a></li>
+        <li><a href="/" class="" style="color: white; background-color:#19aff5; font-size: 18px; font-weight: 600;">View Profile</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container">
+    
+    <div class="row signup">
+        <div class="row">
+            <h3>Add a New Session</h3>
+        </div><br>
+        
+        
+        <form action="/createpokersession" method="post" class=".form-horizontal"> 
+                        
+          <div class="row form-group input_group">
+               <label for="" class="col-sm-2">Username:</label>
+               <div class="col-sm-10">
+                  <input type="text" name="username" id="username" class="form-control"> 
+               </div>
+           </div>
+            
+            <div class="row form-group input_group">
+               <label for="" class="col-sm-2">Venue:</label>
+               <div class="col-sm-10">
+                  <input type="text" name="venue" id="venue" class="form-control"> 
+               </div>
+           </div>
+                        
+            <div class="row form-group input_group">
+               <label for="" class="col-sm-2">Variant:</label>
+               <div class="col-sm-10">
+                  <input type="text" name="variant" id="variant" class="form-control"> 
+               </div>
+           </div>
+                         
+           <div class="row form-group input_group">
+               <label for="" class="col-sm-2">Buy In:</label>
+               <div class="col-sm-10">
+                  <input type="number" name="buyin" id="buyin" class="form-control"> 
+               </div>
+           </div>
+           
+           <div class="row form-group input_group">
+               <label for="" class="col-sm-2">Cash Out:</label>
+               <div class="col-sm-10">
+                  <input type="number" name="cashout" id="cashout" class="form-control"> 
+               </div>
+           </div>
+           
+           <div class="row form-group input_group">
+               <label for="" class="col-sm-2">Start Time:</label>
+               <div class="col-sm-10">
+                  <input type="datetime-local" name="start" id="start" class="form-control" placeholder="Month/Day/Year"> 
+                  <p class="form-control-static">Ex: 10/19/2016</p>
+               </div>
+           </div>
+           
+           <div class="row form-group input_group">
+               <label for="" class="col-sm-2">End Time:</label>
+               <div class="col-sm-10">
+                  <input type="datetime-local" name="end" id="end" class="form-control" placeholder="Month/Day/Year"> 
+                  <p class="form-control-static">Ex: 10/19/2016</p>
+               </div>
+           </div>
+           
+           <div class="row form-group" style="margin: 0px 10px 20px 10px;">
+               <div class="col-xs-12">
+                  <input type="submit" name="submit" id="submit" class="form-control"> 
+               </div>
+           </div>
+            
+        </form>
+        
+    </div>
+    
+</div>
+
+
+<!-- Partials to hold the javascript links -->
+<% include partials/scripts %>  
+</body>
+</html>

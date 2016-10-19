@@ -35,10 +35,13 @@
     <div class="row signup">
         <div class="row">
             <h3>Welcome, Please Sign Up</h3>
-        </div>
+        </div><br>
         
         
         <form action="/createuser" method="post" class=".form-horizontal"> 
+                       
+            <span id="errorUsername"></span>
+            <span id="errorFullname"></span>
                         
           <div class="row form-group input_group">
                <label for="" class="col-sm-2">Username:</label>
@@ -66,7 +69,8 @@
     
 </div>
 
-  
+
+<script src="/public/js/reg.js"></script>
 <!-- Partials to hold the javascript links -->
 <% include partials/scripts %>  
 </body>
