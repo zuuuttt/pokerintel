@@ -6,14 +6,19 @@ const User=models.User;
 
 
 exports.insertSession=(sessionObj,cb)=> {
-    var session=Session(sessionObj);
+    var session=new Session(sessionObj);
+   
+    session.save(function (err) {
+    if(err) throw err;
+  
     
-    session.save((err)=>{
-        if (err) throw err;
-        cb(session);
+     cb(session);
     });
     
+    
 }
+
+
 
 exports.getSessions=(search,cb)=>{
     
@@ -26,6 +31,7 @@ exports.getSessions=(search,cb)=>{
 }
 
 exports.getTotalProfit=(username,cb)=> {
+    
     Session.find(user,(sessions)=>{
         var totalprofit=sessions.reduce((prev,curr)=> {
             return prev+curr;
