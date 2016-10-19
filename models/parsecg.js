@@ -12,7 +12,8 @@ fs.readFile('parsecg.csv', 'utf8', function(err, data) {
     if (err) throw err;
     
     let arr=data.split('\n');
-    let ret_obj={username: 'zuuuttt'};   
+    let sessions_arr=[];
+     
     
     arr.pop();
     
@@ -36,7 +37,9 @@ fs.readFile('parsecg.csv', 'utf8', function(err, data) {
         sessionObj.duration=sessionObj.end-sessionObj.start;
         
         console.log(sessionObj);
+        sessions_arr.push(sessionObj);
     }
+    
 });
 function parseBlinds(str) {
     re=/[0-9]{1,2}/g;
