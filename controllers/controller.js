@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const User = require("../models/user")
-const Session = require("../models/session")
+const User = require("../models/user");
+const Session = require("../models/session");
 
 const Mongo = require('mongodb');
 const ObjectID = Mongo.ObjectID;
@@ -38,10 +38,12 @@ router.post('/user/create', (req, res) => {
     })
 // })
 
-router.get('/user/:username', (req, res) => {
-
-	User.findUser(req.params.username, (err, result) => {
-		res.render('userprofile.ejs', {user:result})
+router.get('/user/:_username', (req, res) => {
+	User.findUser(req.params._username, (err, result) => {
+		// console.log(result)
+  //       console.log(typeof result)
+  //       console.log(result.username)
+        res.render('userprofile.ejs', {username:req.params._username})
 	})
 
     // User.findUser(req.params.username, function(result) {
@@ -74,27 +76,8 @@ router.post('/user/:username/session/create', (req, res) => {
 })
 
 router.get('/user/:username/session/list', (req, res) => {
-	Session.getSessions(reg.params.username, (result)=>{
-		res.render('userpokersessions.ejs', {sessions: result})
-	})
-
-    var sessionObj = {
-        username: req.params.username,
-        venue: req.body.venue,
-        variant: req.body.variant,
-        blinds: req.body.blinds,
-        buyin: req.body.buyin,
-        cashout: req.body.cashout,
-        start: req.body.start,
-        end: req.body.end
-    }
-    Session.insertSession(sessionObj, function() {
-        res.redirect('/user/' + req.params.username)
-    })
-})
-
-router.get('/user/:username/session/list', (req, res) => {
     Session.getSessions(reg.params.username, function(result) {
+        console.log(result)
         res.render('userpokersessions.ejs', {
             sessions: result
         })
