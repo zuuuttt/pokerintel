@@ -31,6 +31,41 @@
   
 <div class="container">
     
+    <div class="row" style="background-color:white; width:100%;">
+      <h1>
+<!--          Username-->
+      </h1>
+       <table class="table table-bordered table-hover" style="">
+          <thead>
+              <tr>
+                 <th>Venue</th>
+                 <th>Variant</th>
+                 <th>Buy In</th>
+                 <th>Cash Out</th>
+                 <th>Start Time</th>
+                 <th>End Time</th>
+                 <th>Total Profit</th>
+                 <th>Duration</th>
+                    
+              </tr>
+          </thead>
+          
+          <tbody>
+              <!-- WE WILL HAVE THE VALUES DISPLAYED HERE with <tr><td></td></tr> -->
+              
+              <% for(var i=0; i<sessions.length; i++) {%>
+			         
+			           
+                      <%= sessions[i].start %>  
+			                  
+			  <% } %>
+              
+              
+          </tbody>
+           
+       </table>
+        
+    </div>
     
 </div>
 
