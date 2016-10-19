@@ -1,35 +1,59 @@
-const session=require('./session.js');
-const models=require('./models.js');
+const session = require('./session.js');
+const models = require('./models.js');
+const User = models.User
 
-var testSession={    
+
+var testSession = {
     username: 'zuuudddttssst',
     venue: 'Viage',
     variant: 'NLHE',
-    blinds: [2,2],
+    blinds: [2, 2],
     buyin: '500',
     cashout: 758,
-    start: new Date(2016,10,18,19,00),
-    end: new Date(2016,10,18,21,00)
+    start: new Date(2016, 10, 18, 19, 00),
+    end: new Date(2016, 10, 18, 21, 00)
 }
 
-/*session.insertSession(testSession,(session)=>{
-    console.log(session);
-})*/
 
-session.getSessions((sessions)=> {
-    console.log(sessions);
-})
 
-exports.insertUser=(userObj)=> {
+
+
+exports.getTotalPlay=(username)=> {
+    //takes username and returns total time played
+    //for username across all sessions played
+}
+
+exports.insertUser = (userObj, cb) => {
     
-    var user=User(userObj);
-    user.save((err)=> {
-        if(err) throw err;
+    userObj.name='test';
+    console.log(userObj);
+    var user = User(userObj);
+    user.save((err) => {
+        if (err) throw err;
         console.log("Done");
     });
-    //Takes user object to be inserted into database
-    //returns inserted object if sucessful insert
-    //else returns error if userObj does not meet
-    //schema criteria
+    cb();
+
 }
-    
+
+exports.findUser = (username, cb) => {
+    User.find({
+        username: username
+    }, (err, user) => {
+        if (err) throw err;
+
+        // object of the user
+        console.log(user);
+        cb(user);
+    });
+}
+
+
+exports.getAllUsers = (cb) => {
+
+    User.find({}, (err, users) => {
+        if (err) throw err;
+        cb(users);
+    });
+
+}
