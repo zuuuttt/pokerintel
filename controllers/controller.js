@@ -52,7 +52,7 @@ router.get('/user/:username', (req, res) => {
 
 })
 
-router.get('/user/session/new', (req, res) => {
+router.get('/user/:username/session/new', (req, res) => {
     res.render('createpokersession')
 })
 
