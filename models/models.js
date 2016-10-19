@@ -41,7 +41,7 @@ var sessionSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    //13th
+    //let
     profit: {
         type: Number,
         default: 0
