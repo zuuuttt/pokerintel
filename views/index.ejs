@@ -9,7 +9,7 @@
 <% include partials/header.ejs %> 
       <h2>Welcome to BeaverBook</h2>
       <div>
-	      <div class="col-lg-4">
+	      <div class="col-lg-5">
 			  <% for(var i=0; i<usernames.length; i++) {%>
 			    <div>
 			    	<form action="/user/<%= usernames[i].username %>" method="GET">

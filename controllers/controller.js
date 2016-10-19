@@ -21,22 +21,22 @@ router.get('/user/new', (req, res) => {
 router.post('/user/create', (req, res) => {
     //check uniqueness
     var username = req.body.username
-    User.getAllUsers(function(result) {
-        for (var i = 0; i < result.length; i++) {
-            if (username === reselt[i].username) {
-                console.log('This username already exists')
-                res.render('/user/create')
-            }
-        }
+    // User.getAllUsers(function(result) {
+    //     for (var i = 0; i < result.length; i++) {
+    //         if (username === result[i].username) {
+    //             console.log('This username already exists')
+    //             res.render('/user/create')
+    //         }
+    //     }
         var userObj = {
             "username": username,
             "name": req.body.name
         }
         User.insertUser(userObj, function() {
-            res.redirect('/users/' + username)
+            res.redirect('/user/' + username)
         })
     })
-})
+// })
 
 router.get('/user/:username', (req, res) => {
 
