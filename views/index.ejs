@@ -7,6 +7,20 @@
 <body>
 <!-- Partials to hold the navbar -->
 <% include partials/header.ejs %> 
+<<<<<<< HEAD
+<div class="container">
+      <h2>Welcome to BeaverBook</h2>
+      <div class="row">
+		  <% for(var i=0; i<usernames.length; i++) {%>
+		    <div class="row">
+		    	<form action="/user/<%= usernames[i].username %>" method="GET">
+            		<button class="btn btn-primary" type="submit"><%= usernames[i].username %></button>
+          		</form> <br>
+		    </div>
+		  <% } %>
+       </div>
+</div>
+=======
       <h2>Welcome to BeaverBook</h2>
       <div>
 	      <div class="col-lg-5">
@@ -19,6 +33,7 @@
 			  <% } %>
 	       </div>      	
       </div>
+>>>>>>> d9ca692a47d365a6b9b7f4f3bd12f562b9aafee2
 <!-- Partials to hold the javascript links -->
 <% include partials/scripts.ejs %>   
 </body>
