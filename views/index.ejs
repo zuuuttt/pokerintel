@@ -7,7 +7,7 @@
 <body>
 <!-- Partials to hold the navbar -->
 <% include partials/header.ejs %> 
-<main>
+<div class="container">
       <h2>Welcome to BeaverBook</h2>
       <div class="row">
 		  <% for(var i=0; i<usernames.length; i++) {%>
@@ -18,7 +18,7 @@
 		    </div>
 		  <% } %>
        </div>
-</main>
+</div>
 <!-- Partials to hold the javascript links -->
 <% include partials/scripts.ejs %>   
 </body>

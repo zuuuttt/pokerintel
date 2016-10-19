@@ -27,7 +27,7 @@ exports.getSessions=(search,cb)=>{
 
 exports.getTotalProfit=(username,cb)=> {
     Session.find(user,(sessions)=>{
-        let totalprofit=sessions.reduce((prev,curr)=> {
+        var totalprofit=sessions.reduce((prev,curr)=> {
             return prev+curr;
         });
         cb(totalprofit);
