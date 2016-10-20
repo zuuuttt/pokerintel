@@ -38,8 +38,8 @@ router.post('/user/create', (req, res) => {
     })
     // })
 
-router.get('/user/:_username', (req, res) => {
-    User.findUser(req.params._username, (err, result) => {
+router.get('/user/:username', (req, res) => {
+    User.findUser(req.params.username, (err, result) => {
         User.getTotalProfit(req.params.username, (err, profit) => {
             User.getTotalDuration(req.params.username, (err, duration) => {
                 var totalprofit = profit
@@ -92,7 +92,7 @@ router.post('/user/:username/session/create', (req, res) => {
 })
 
 router.get('/user/:username/session/list', (req, res) => {
-    Session.getSessions(req.params.username, function(result) {
+    Session.getSessions(req.params.username, function(err, result) {
         console.log(result)
         console.log(result.username)
         res.render('userpokersessions.ejs', {

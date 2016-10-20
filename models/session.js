@@ -17,7 +17,7 @@ exports.getSessions=(username,cb)=>{
 
     Session.find({username: username},(err,sessions)=>{
         if(err) throw err;
-        cb(sessions);
+        cb(null,sessions);
     });
     
 }

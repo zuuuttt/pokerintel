@@ -24,12 +24,12 @@ var user={
 //    console.log(user);
 //})
 
-User.findUser("GusHansen",(err,user)=>{
-    if(err) {
-        console.log("Irrelevant right now")
-    }
-    console.log(user);
-});
+//User.findUser("GusHansen",(err,user)=>{
+//    if(err) {
+//        console.log("Irrelevant right now")
+//    }
+//    console.log(user);
+//});
 
 User.getAllUsers((users)=>{
     console.log(users);
@@ -40,15 +40,15 @@ User.getAllUsers((users)=>{
 //})
 
 
-Session.getSessions("zuuuttt",(sessions)=>{
-    console.log(sessions)
-})
-
-User.getTotalProfit("zuuuttt",(totalprofit)=>{
+//Session.getSessions("zuuuttt",(err,sessions)=>{
+//    console.log(sessions)
+//})
+//
+User.getTotalProfit("zuuuttt",(err,totalprofit)=>{
     console.log(totalprofit);
 });
-
-User.getTotalDuration("zuuuttt",(totalplay)=>{
+//
+User.getTotalDuration("zuuuttt",(err,totalplay)=>{
     console.log(totalplay)
 })
 
