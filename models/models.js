@@ -77,7 +77,7 @@ var userSchema = new mongoose.Schema({
 
 sessionSchema.pre('save', function(next) {
     this.profit=this.cashout-this.buyin;
-    this.time=this.end-this.start;
+    this.duration=this.end-this.start;
     
     
     next();
