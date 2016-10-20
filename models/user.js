@@ -43,7 +43,8 @@ exports.getAllUsers = (cb) => {
 
 exports.getTotalProfit=(username,cb)=> {
     
-    Session.getSessions(username,(sessions)=>{
+    Session.getSessions(username,(err,sessions)=>{
+        console.log(sessions);
         var profit=sessions.map((curr)=> {
             return curr.profit;
         });
@@ -53,14 +54,15 @@ exports.getTotalProfit=(username,cb)=> {
             return prev+curr;
         },0);
         cb(null,totalprofit);
-        //console.log(totalprofit)
+        console.log(totalprofit)
     });
 }
 
 exports.getTotalDuration=(username,cb)=> {
     //takes username and returns total time played
     //for username across all sessions played
-    Session.getSessions(username,(sessions)=>{
+    Session.getSessions(username,(err,sessions)=>{
+        
         var duration=sessions.map((curr)=> {
             
             return Date.parse(curr.duration);
