@@ -38,8 +38,8 @@ router.post('/user/create', (req, res) => {
     })
     // })
 
-router.get('/user/:_username', (req, res) => {
-    User.findUser(req.params._username, (err, result) => {
+router.get('/user/:username', (req, res) => {
+    User.findUser(req.params.username, (err, result) => {
         User.getTotalProfit(req.params.username, (err, profit) => {
             User.getTotalDuration(req.params.username, (err, duration) => {
                 var totalprofit = profit
