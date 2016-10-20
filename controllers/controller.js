@@ -92,7 +92,7 @@ router.post('/user/:username/session/create', (req, res) => {
 })
 
 router.get('/user/:username/session/list', (req, res) => {
-    Session.getSessions(req.params.username, function(result) {
+    Session.getSessions(req.params.username, function(err, result) {
         console.log(result)
         console.log(result.username)
         res.render('userpokersessions.ejs', {
