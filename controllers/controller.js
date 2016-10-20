@@ -67,11 +67,9 @@ router.post('/user/:username/session/create', (req, res) => {
 		blinds: [1,2],
 		buyin: req.body.buyin,
 		cashout: req.body.cashout,
-		start: req.body.start,
-		end: req.body.end
+		start: new Date(req.body.start),
+		end: new Date(req.body.end)
 	}
-    console.log(typeof sessionObj.start)
-    console.log(sessionObj)
 	Session.insertSession(sessionObj, ()=>{
 		res.redirect('/user/'+req.params.username)
 	})
