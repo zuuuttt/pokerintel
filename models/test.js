@@ -19,27 +19,27 @@ var user={
             name: "Gus Hansen"
          
         };
-
+//
 //User.insertUser(user,()=>{
 //    console.log(user);
 //})
 
-//User.findUser("GusHansen",(err,user)=>{
-//    if(err) {
-//        console.log("Irrelevant right now")
-//    }
-//    console.log(user);
-//});
-//
-//User.getAllUsers((users)=>{
-//    console.log(users);
-//})
-//
+User.findUser("GusHansen",(err,user)=>{
+    if(err) {
+        console.log("Irrelevant right now")
+    }
+    console.log(user);
+});
+
+User.getAllUsers((users)=>{
+    console.log(users);
+})
+
 //Session.insertSession(session,(session)=> {
 //    console.log("Inserted Session");
 //})
-//
-//
+
+
 Session.getSessions("zuuuttt",(sessions)=>{
     console.log(sessions)
 })
