@@ -19,15 +19,15 @@ router.get('/user/new', (req, res) => {
 })
 
 router.post('/user/create', (req, res) => {
-    //check uniqueness
-    var username = req.body.username
-    // User.getAllUsers(function(result) {
-    //     for (var i = 0; i < result.length; i++) {
-    //         if (username === result[i].username) {
-    //             console.log('This username already exists')
-    //             res.render('/user/create')
-    //         }
-    //     }
+        //check uniqueness
+        var username = req.body.username
+            // User.getAllUsers(function(result) {
+            //     for (var i = 0; i < result.length; i++) {
+            //         if (username === result[i].username) {
+            //             console.log('This username already exists')
+            //             res.render('/user/create')
+            //         }
+            //     }
         var userObj = {
             "username": username,
             "name": req.body.name
@@ -36,15 +36,24 @@ router.post('/user/create', (req, res) => {
             res.redirect('/user/' + username)
         })
     })
-// })
+    // })
 
 router.get('/user/:_username', (req, res) => {
-	User.findUser(req.params._username, (err, result) => {
-		// console.log(result)
-  //       console.log(typeof result)
-  //       console.log(result.username)
-        res.render('userprofile.ejs', {username:req.params._username})
-	})
+    User.findUser(req.params._username, (err, result) => {
+        User.getTotalProfit(req.params.username, (err, profit) => {
+            User.getTotalDuration(req.params.username, (err, duration) => {
+                rate = profit / duration
+                res.render('userprofile.ejs', {
+                    username: req.params._username,
+                    totalprofit: profit,
+                    totalduration: duration,
+                    hourlyrate: rate
+                })
+            })
+        })
+
+
+    })
 
     // User.findUser(req.params.username, function(result) {
     //     res.render('userprofile.ejs', {
@@ -55,26 +64,26 @@ router.get('/user/:_username', (req, res) => {
 })
 
 router.get('/user/:username/session/new', (req, res) => {
-    res.render('createpokersession', {username:req.params.username})
+    res.render('createpokersession', {
+        username: req.params.username
+    })
 })
 
 router.post('/user/:username/session/create', (req, res) => {
 
-	var sessionObj ={
-		username:req.params.username,
-		venue:req.body.venue,
-		variant:req.body.variant,
-		blinds: [1,2],
-		buyin: req.body.buyin,
-		cashout: req.body.cashout,
-		start: req.body.start,
-		end: req.body.end
-	}
-    console.log(typeof sessionObj.start)
-    console.log(sessionObj)
-	Session.insertSession(sessionObj, ()=>{
-		res.redirect('/user/'+req.params.username)
-	})
+    var sessionObj = {
+        username: req.params.username,
+        venue: req.body.venue,
+        variant: req.body.variant,
+        blinds: [1, 2],
+        buyin: req.body.buyin,
+        cashout: req.body.cashout,
+        start: new Date(req.body.start),
+        end: new Date(req.body.end)
+    }
+    Session.insertSession(sessionObj, () => {
+        res.redirect('/user/' + req.params.username)
+    })
 })
 
 router.get('/user/:username/session/list', (req, res) => {
@@ -87,4 +96,3 @@ router.get('/user/:username/session/list', (req, res) => {
     })
 });
 module.exports = router
-
