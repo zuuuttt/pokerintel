@@ -21,8 +21,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-      <li><a href="/" class="" style="color: white; background-color:#19aff5; font-size: 18px; font-weight: 600;">View Profile</a></li>
-       <li><a href="/user/session/new" class="" style="color: white; background-color:#19aff5; font-size: 18px; font-weight: 600;">Add New Session</a></li>
+      <li><a href="/user/<%= sessions.username %>" class="" style="color: white; background-color:#19aff5; font-size: 18px; font-weight: 600;">View Profile</a></li>
+       <li><a href="/user/<%=  %>/session/new" class="" style="color: white; background-color:#19aff5; font-size: 18px; font-weight: 600;">Add New Session</a></li>
       </ul>
     </div>
   </div>
@@ -53,10 +53,17 @@
           <tbody>
               <!-- WE WILL HAVE THE VALUES DISPLAYED HERE with <tr><td></td></tr> -->
               
-              <% for(var i=0; i<sessions.length; i++) {%>
-			         
-			           
-                      <%= sessions[i].start %>  
+              <% for(var i=0; i<sessions.length; i++) {%>  
+                    <tr>
+                        <td><%= sessions[i].venue %></td>
+                        <td><%= sessions[i].variant %></td>
+                        <td><%= sessions[i].buyin %></td>
+                        <td><%= sessions[i].cashout %></td>
+                        <td><%= sessions[i].start %></td>
+                        <td><%= sessions[i].end %></td>
+                        <td><%= sessions[i].profit %></td>
+                        <td><%= sessions[i].duration %></td>
+                    </tr>
 			                  
 			  <% } %>
               
