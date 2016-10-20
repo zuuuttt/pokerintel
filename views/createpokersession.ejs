@@ -21,8 +21,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/" class="" style="color: white; background-color:#19aff5; font-size: 18px; font-weight: 600;">View Session</a></li>
-        <li><a href="/" class="" style="color: white; background-color:#19aff5; font-size: 18px; font-weight: 600;">View Profile</a></li>
+        <li><a href="/user/<%= username %>/session/list" class="" style="color: white; background-color:#19aff5; font-size: 18px; font-weight: 600;">View Session</a></li>
+        <li><a href="/user/<%= username %>" class="" style="color: white; background-color:#19aff5; font-size: 18px; font-weight: 600;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Go Back</a></li>
       </ul>
     </div>
   </div>
@@ -41,7 +41,7 @@
           <div class="row form-group input_group">
                <label for="" class="col-sm-2">Username:</label>
                <div class="col-sm-10">
-                  <input type="text" name="username" id="username" class="form-control"> 
+                  <input type="text" name="username" id="username" value="<%= username %>" class="form-control" readonly> 
                </div>
            </div>
             

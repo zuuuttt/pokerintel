@@ -84,6 +84,12 @@ sessionSchema.pre('save', function(next) {
     
 });
 
+sessionSchema.virtual('blinds.str').get(function () {
+    var small=this.blinds[0].toString();
+    var big=this.blinds[1].toString();
+    return "£"+small+"/"+"£"+big;
+});
+
 
 
 

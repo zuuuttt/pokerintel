@@ -33,3 +33,16 @@ input[type="submit"]{
 #errorUsername, #errorFullname{
     color: red;
 }
+
+.jumbo{
+    margin: 0;
+    padding-top: 20px;
+    height: 210px;
+    background-color: #02818a;
+    color: white;
+}
+
+.rowData{
+    margin: 0 auto;
+    width: 80%;
+}
