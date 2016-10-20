@@ -2,37 +2,29 @@ const models=require('./models.js');
 const Session=models.Session;
 const User=models.User;
 
-
-
-
 exports.insertSession=(sessionObj,cb)=> {
-    var session=Session(sessionObj);
-    
-    session.save((err)=>{
-        if (err) throw err;
-        cb(session);
+    var session=new Session(sessionObj);
+   
+    session.save(function (err) {
+    if(err) throw err;
+
+     cb(session);
     });
-    
+ 
 }
 
-exports.getSessions=(search,cb)=>{
-    
-    
-    Session.find(search || {},(err,sessions)=>{
+exports.getSessions=(username,cb)=>{
+
+    Session.find({username: username},(err,sessions)=>{
         if(err) throw err;
         cb(sessions);
     });
     
 }
 
-exports.getTotalProfit=(username,cb)=> {
-    Session.find(user,(sessions)=>{
-        var totalprofit=sessions.reduce((prev,curr)=> {
-            return prev+curr;
-        });
-        cb(totalprofit);
-    });
-}
+
+
+
 
 
 

@@ -55,7 +55,7 @@ router.get('/user/:_username', (req, res) => {
 })
 
 router.get('/user/:username/session/new', (req, res) => {
-    res.render('createpokersession')
+    res.render('createpokersession', {username:req.params.username})
 })
 
 router.post('/user/:username/session/create', (req, res) => {
@@ -64,12 +64,14 @@ router.post('/user/:username/session/create', (req, res) => {
 		username:req.params.username,
 		venue:req.body.venue,
 		variant:req.body.variant,
-		blinds: req.body.blinds,
+		blinds: [1,2],
 		buyin: req.body.buyin,
 		cashout: req.body.cashout,
 		start: req.body.start,
 		end: req.body.end
 	}
+    console.log(typeof sessionObj.start)
+    console.log(sessionObj)
 	Session.insertSession(sessionObj, ()=>{
 		res.redirect('/user/'+req.params.username)
 	})
