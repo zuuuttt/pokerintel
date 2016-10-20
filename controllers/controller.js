@@ -7,7 +7,7 @@ const Mongo = require('mongodb');
 const ObjectID = Mongo.ObjectID;
 
 router.get('/', (req, res) => {
-    User.getAllUsers(function(result) {
+    User.getAllUsers(function(err, result) {
         res.render('index.ejs', {
             usernames: result
         })
@@ -42,11 +42,16 @@ router.get('/user/:_username', (req, res) => {
     User.findUser(req.params._username, (err, result) => {
         User.getTotalProfit(req.params.username, (err, profit) => {
             User.getTotalDuration(req.params.username, (err, duration) => {
-                rate = profit / duration
+                var totalprofit = profit
+                var totalduration = duration
+                var rate = totalprofit / totalduration
+                console.log("profit",totalprofit);
+                console.log("duration: ",totalduration);
+                console.log("rate: ",rate);
                 res.render('userprofile.ejs', {
                     username: req.params._username,
-                    totalprofit: profit,
-                    totalduration: duration,
+                    totalprofit: totalprofit,
+                    totalduration: totalduration,
                     hourlyrate: rate
                 })
             })
