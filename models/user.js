@@ -36,7 +36,7 @@ exports.getAllUsers = (cb) => {
     User.find({}, (err, users) => {
         if (err) throw err;
         
-        cb(users);
+        cb(null,users);
     });
 
 }
@@ -52,7 +52,7 @@ exports.getTotalProfit=(username,cb)=> {
             
             return prev+curr;
         },0);
-        cb(totalprofit);
+        cb(null,totalprofit);
         //console.log(totalprofit)
     });
 }
@@ -71,6 +71,6 @@ exports.getTotalDuration=(username,cb)=> {
         },0)
         totalinhours=Math.ceil(totalduration/360000);
         console.log(totalinhours);
-        cb(totalduration);
+        cb(null,totalduration);
     })
 }
