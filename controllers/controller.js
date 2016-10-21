@@ -40,16 +40,17 @@ router.post('/user/create', (req, res) => {
 
 router.get('/user/:username', (req, res) => {
     User.findUser(req.params.username, (err, result) => {
+        console.log("get result: " + result.username)
         User.getTotalProfit(req.params.username, (err, profit) => {
             User.getTotalDuration(req.params.username, (err, duration) => {
                 var totalprofit = profit
-                var totalduration = duration
+                var totalduration = Math.floor(duration/3600000)
                 var rate = totalprofit / totalduration
                 console.log("profit",totalprofit);
                 console.log("duration: ",totalduration);
                 console.log("rate: ",rate);
                 res.render('userprofile.ejs', {
-                    username: req.params._username,
+                    username: result.username,
                     totalprofit: totalprofit,
                     totalduration: totalduration,
                     hourlyrate: rate

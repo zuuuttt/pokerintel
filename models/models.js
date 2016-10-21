@@ -54,7 +54,7 @@ var sessionSchema = new mongoose.Schema({
     },
     //5th
     duration: {
-        type: Date,
+        type: Number,
         default: 0
     }
 
@@ -77,7 +77,7 @@ var userSchema = new mongoose.Schema({
 
 sessionSchema.pre('save', function(next) {
     this.profit=this.cashout-this.buyin;
-    this.duration=this.end-this.start;
+    this.duration=(this.end-this.start);
     
     
     next();

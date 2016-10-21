@@ -16,7 +16,9 @@ exports.insertUser = (userObj, cb) => {
 }
 
 exports.findUser = (username, cb) => {
+    console.log("passed to find: " + username)
     User.findOne({username: username}, (err, user) => {
+        console.log("output from find: " + user)
         if (err) throw err;
 
         // object of the user
@@ -44,7 +46,7 @@ exports.getAllUsers = (cb) => {
 exports.getTotalProfit=(username,cb)=> {
     
     Session.getSessions(username,(err,sessions)=>{
-        console.log(sessions);
+        // console.log(sessions);
         var profit=sessions.map((curr)=> {
             return curr.profit;
         });
