@@ -11,9 +11,26 @@
 <div class="container">
     
     <div class="row" style="background-color:white; width:100%;">
-      <h1>
-<!--          Username-->
-      </h1>
+      <h1> <%= username %>'s session summary </h1>
+
+        <br>
+        <div class="row">
+            <div class="col-xs-12 col-sm-3">
+                <form action="/user/<%= username %>/session/new" method="GET">
+                    <button id='sessionbutton' class="btn btn-success btn-lg" type="submit">Add a session</button>
+                </form>
+            </div>
+
+            <div class="col-xs-12 col-sm-3">
+                <form action="/user/<%= username %>" method="GET">
+                    <button class="btn btn-success btn-lg" type="submit">View your profile</button>
+                </form>
+            </div>
+
+        </div>
+
+      <br>
+
        <table class="table table-bordered table-hover" style="">
           <thead>
               <tr>

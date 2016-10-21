@@ -7,45 +7,50 @@
 <body>
 <% include partials/header.ejs %> 
 
-<div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-8">
-    <br>
-    <h1>Welcome to you profile, <b><%= username %></b></h1>
-    <br>
-    
-    <div class="row" style="border: 1px solid #e7e7e7;">
-        <div class="col-sm-4" style="margin-top:20px;">
-            <div class="form-group">
-                <img src='http://www.flopturnriver.com/pokerforum/image.php?s=553f0972274c782883341df1a34e2efb&u=22902&dateline=2010' style='margin-left: 40px'>
-            </div>
-        </div>
-        
-        <div class="col-sm-8" style="margin-top:20px;">
-            <div class="row form-group">
-                <label>Total Profit: </label>
-                <div><%= totalprofit %> $</div><br>
-                
-                <label>Total hours played: </label>
-                <div><%= totalduration %> Hours</div><br>
+<div class="container">
 
-                <label>Hourly Rate: </label>
-                <div><%= hourlyrate %> $ per Hour</div><br>
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 col-sm-8 xol-sm-offset-8">
+            <br>
+            <h1>Welcome to you profile, <b><%= username %></b></h1>
+            <br>
+            <div class="col-xs-12 col-md-10">
+            
+                <div class="row" style="border: 1px solid #e7e7e7;">
+                    <div class="col-xs-12 col-sm-6 col-md-5" style="margin-top:20px;">
+                        <div class="form-group">
+                            <img src='http://www.flopturnriver.com/pokerforum/image.php?s=553f0972274c782883341df1a34e2efb&u=22902&dateline=2010' style='margin-left: 40px'>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xs-6 col-xs-offset-3 col-sm-4" style="margin-top:20px;">
+                        <div class="row form-group">
+                            <label>Total Profit: </label>
+                            <div><%= totalprofit %> $</div><br>
+                            
+                            <label>Total hours played: </label>
+                            <div><%= totalduration %> Hours</div><br>
+
+                            <label>Hourly Rate: </label>
+                            <div><%= hourlyrate %> $ per Hour</div><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-2">
+                <form action="/user/<%= username %>/session/new" method="GET">
+                    <button class="btn btn-success btn-lg center-block" type="submit">Create new session</button>
+                </form><br>
+                <form action="/user/<%= username %>/session/list" method="GET">
+                    <button class="btn btn-success btn-lg center-block" type="submit">View your sessions</button>
+                </form>
             </div>
         </div>
+
     </div>
-    </div>
-    <div class="col-sm-2">
-        <br><br><br><br><br><br>
-        <form action="/user/<%= username %>/session/new" method="GET">
-            <button class="btn btn-success btn-lg" type="submit">Create new session</button>
-        </form><br>
-        <form action="/user/<%= username %>/session/list" method="GET">
-            <button class="btn btn-success btn-lg" type="submit">View your sessions</button>
-        </form>
-    </div>
+    <br>
 </div>
-
 
 <!-- Partials to hold the javascript links -->
 <% include partials/scripts %>  
