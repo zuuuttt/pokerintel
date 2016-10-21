@@ -14,4 +14,5 @@ app.use(controller)
 
 app.listen(3000, function() {
 	console.log('chilling on 3000');
+	console.log('Hashim is a sexy beast');
 })

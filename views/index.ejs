@@ -7,21 +7,29 @@
 <body>
 <!-- Partials to hold the navbar -->
 <% include partials/header.ejs %> 
+    
     <div class="container">  
-      <h2>Welcome to BeaverBook</h2>
-      
-	      <div class="col-lg-5">
-			  <% for(var i=0; i<usernames.length; i++) {%>
-			    <div>
-			    	<form action="/user/<%= usernames[i].username %>" method="GET">
-	            		<button class="btn btn-primary" type="submit"><%= usernames[i].username %></button>
-	          		</form> <br>
-			    </div>
-			  <% } %>
-	       </div>      	
-      </div>
-
+      <h3>Welcome to PokerIntel, please select your profile or create a new one</h3>
+      	<div class="row">
+		    <div class="col-lg-6">
+				  <% for(var i=0; i<usernames.length; i++) {%>
+				    <div>
+				    	<form action="/user/<%= usernames[i].username %>" method="GET">
+		            		<button class="btn btn-primary" type="submit"><%= usernames[i].username %></button>
+		          		</form> <br>
+				    </div>
+				  <% } %>
+		       </div>      	
+	      	
+	      	<div class="col-lg-2">
+	      		<form action="/user/new" method="GET">
+		       		<button class="btn btn-success" type="submit">Create new profile</button>
+		        </form>
+	      	</div>
+	      	</div>
+      	</div>
 <!-- Partials to hold the javascript links -->
 <% include partials/scripts.ejs %>   
+<% include partials/footer.ejs %> 
 </body>
 </html>

@@ -5,28 +5,7 @@
     <% include partials/head %>
 </head>
 <body>
-<nav class="navbar navbar-default" style="background-color: #19aff5;">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand poker" href="/">POKERINTEL</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-      <li><a href="/user/<%= sessions.username %>" class="" style="color: white; background-color:#19aff5; font-size: 18px; font-weight: 600;">View Profile</a></li>
-       <li><a href="/user/<%=  %>/session/new" class="" style="color: white; background-color:#19aff5; font-size: 18px; font-weight: 600;">Add New Session</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<% include partials/header %>
  
   
 <div class="container">
@@ -40,6 +19,7 @@
               <tr>
                  <th>Venue</th>
                  <th>Variant</th>
+                 <th>Blinds</th>
                  <th>Buy In</th>
                  <th>Cash Out</th>
                  <th>Start Time</th>
@@ -57,6 +37,7 @@
                     <tr>
                         <td><%= sessions[i].venue %></td>
                         <td><%= sessions[i].variant %></td>
+                        <td><%= sessions[i].blinds %></td>
                         <td><%= sessions[i].buyin %></td>
                         <td><%= sessions[i].cashout %></td>
                         <td><%= sessions[i].start %></td>
@@ -79,5 +60,6 @@
 
 <!-- Partials to hold the javascript links -->
 <% include partials/scripts %>  
+<% include partials/footer.ejs %> 
 </body>
 </html>

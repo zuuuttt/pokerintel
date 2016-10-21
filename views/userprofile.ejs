@@ -5,60 +5,50 @@
     <% include partials/head %>
 </head>
 <body>
-<nav class="navbar" style="margin-bottom: 0;">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand poker" style="color: black !important;" href="/">POKERINTEL</a>
-    </div>
+<% include partials/header.ejs %> 
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-       <li><a href="/user/<%= username %>/session/new" style="color: black; font-size: 18px; font-weight: 600; background-color: white !important">Add New Session</a></li>
-        <li><a href="/user/<%= username %>/session/list" style="color: black; font-size: 18px; font-weight: 600; background-color: white !important">View Session</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
- 
-<div class="jumbotron jumbo">
-    <h2 class="text-center" style="font-size:70px; font-weight: 600;">Welcome <%= username %></h2>
-    <h4 class="text-center" style="font-size: 30px;">(View Your profile)</h4>
-</div>
-  
-<div class="container rowData">
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-8">
     <br>
-    <h1 class="text-center"><%= username %>'s Profile</h1>
+    <h1>Welcome to you profile, <b><%= username %></b></h1>
     <br>
     
     <div class="row" style="border: 1px solid #e7e7e7;">
         <div class="col-sm-4" style="margin-top:20px;">
             <div class="form-group">
-                <img src='http://placehold.it/200x200' style='margin-left: 40px'>
+                <img src='http://www.flopturnriver.com/pokerforum/image.php?s=553f0972274c782883341df1a34e2efb&u=22902&dateline=2010' style='margin-left: 40px'>
             </div>
         </div>
         
         <div class="col-sm-8" style="margin-top:20px;">
             <div class="row form-group">
-                <label class='control-label col-sm-3'>Total Profit: £</label>
-                <div class='col-sm-9'><%= totalprofit %></div><br><br>
+                <label>Total Profit: </label>
+                <div><%= totalprofit %> $</div><br>
                 
-                <label class='control-label col-sm-3'>Total Play: hrs</label>
-                <div class='col-sm-9'><%= totalduration %></div><br><br>
+                <label>Total hours played: </label>
+                <div><%= totalduration %> Hours</div><br>
+
+                <label>Hourly Rate: </label>
+                <div><%= hourlyrate %> $ per Hour</div><br>
             </div>
         </div>
     </div>
-    
+    </div>
+    <div class="col-sm-2">
+        <br><br><br><br><br><br>
+        <form action="/user/<%= username %>/session/new" method="GET">
+            <button class="btn btn-success btn-lg" type="submit">Create new session</button>
+        </form><br>
+        <form action="/user/<%= username %>/session/list" method="GET">
+            <button class="btn btn-success btn-lg" type="submit">View your sessions</button>
+        </form>
+    </div>
 </div>
 
 
 <!-- Partials to hold the javascript links -->
 <% include partials/scripts %>  
+<% include partials/footer.ejs %> 
 </body>
 </html>

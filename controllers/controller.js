@@ -14,6 +14,10 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get('/about', (req, res) => {
+    res.render('about.ejs')
+})
+
 router.get('/user/new', (req, res) => {
     res.render('createuser.ejs')
 })
@@ -40,15 +44,11 @@ router.post('/user/create', (req, res) => {
 
 router.get('/user/:username', (req, res) => {
     User.findUser(req.params.username, (err, result) => {
-        console.log("get result: " + result.username)
         User.getTotalProfit(req.params.username, (err, profit) => {
             User.getTotalDuration(req.params.username, (err, duration) => {
                 var totalprofit = profit
-                var totalduration = Math.floor(duration/3600000)
+                var totalduration = Math.floor(duration/3600000000)
                 var rate = totalprofit / totalduration
-                console.log("profit",totalprofit);
-                console.log("duration: ",totalduration);
-                console.log("rate: ",rate);
                 res.render('userprofile.ejs', {
                     username: result.username,
                     totalprofit: totalprofit,
@@ -81,7 +81,7 @@ router.post('/user/:username/session/create', (req, res) => {
         username: req.params.username,
         venue: req.body.venue,
         variant: req.body.variant,
-        blinds: [1, 2],
+        blinds: [req.body.smblind, req.body.bigblind],
         buyin: req.body.buyin,
         cashout: req.body.cashout,
         start: new Date(req.body.start),
@@ -94,10 +94,9 @@ router.post('/user/:username/session/create', (req, res) => {
 
 router.get('/user/:username/session/list', (req, res) => {
     Session.getSessions(req.params.username, function(err, result) {
-        console.log(result)
-        console.log(result.username)
         res.render('userpokersessions.ejs', {
-            sessions: result
+            sessions: result,
+            username: req.params.username
         })
     })
 });
