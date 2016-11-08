@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser= require('body-parser')
 const MongoClient = require('mongodb').MongoClient
 const app = express();
-const conn='mongodb://pokerintel:poker1tel@ds017256.mlab.com:17256/pokerintel'
+const conn='mongodb://Nicolas:foobar@ds033996.mlab.com:33996/nico-mongodb'
 
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}))

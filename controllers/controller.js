@@ -29,17 +29,18 @@ router.post('/user/create', (req, res) => {
             "username": username,
             "name": req.body.name
         }
-        
+        console.log(userObj);
         var user=new User(userObj);
-        user.save((err)=> {
-            res.redirect('/user/:username')
+        user.save((err, cb)=> {
+            if (err) return handleError(err)
+            console.log('user saved');
+            res.redirect('/user/'+username)
         });
-        
 });
 
 
 router.get('/user/:username', (req, res) => {
-    User.findbyUsername(req.params.username,(err,user)=> {
+    User.findByUsername(req.params.username,(err,user)=> {
         console.log(user);
         res.render('userprofile.ejs',user);
     });

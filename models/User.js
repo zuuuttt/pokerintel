@@ -30,12 +30,12 @@ userSchema.statics.findAllUsers=function(cb) {
     return this.find({},cb);
 }
 
-userSchema.statics.findbyUsername=function(username,cb) {
+userSchema.statics.findByUsername = function(username, cb) {
     
     return this.findOne({username: username},cb);
 }
 
 userSchema.pre('save',function(next) {
-    
+    next()
 })
 exports.User=mongoose.model('User', userSchema);
