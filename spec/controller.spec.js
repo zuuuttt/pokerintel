@@ -49,24 +49,21 @@ let purgeDB=function () {
             return HandleError(err);
         }
     });
-
+console.log("all records deleted")
 }
 
 purgeDB();
 
-describe("POST /user/create", function() {
+describe("POST /user/create test the create user functionality", function() {
 
-    it("tests that we can create a user", function(done) {
+    it("tests that we can create a new user which does not exist in the database", function(done) {
         agent.post("/user/create")               // start creating your request
             .type('form')                   // mimic the action of submittin a request with a form
             .send(Hashim.user) // Request construction finished and send the information passed as an argument ex: {name: "pedro", age: 22}
             .expect( function(res){// Check that the responce does or does not have the information necessary to make the test pass
+                expect(res.text).toContain("Redirecting to /user/zuuuttt")
                 
-                if (res.body.name !== "Hashim"&&false) {
-                    
-                    throw new Error("Saved Wrong Name")
-                }
-               console.log("Response",res.body) 
+                
             })
             .end(function(err, res) {          // Allways add these lines when using Supertest with Jasmine
                 if(err) {
@@ -76,7 +73,44 @@ describe("POST /user/create", function() {
                 done()
             })
     })
+    
+    it("tests app fails gracefully when we try to enter a user that already exists", function(done) {
+        agent.post("/user/create")
+            .type('form')
+            .send(Hashim.user)
+            .expect(function (res) {
+                console.log("errors",res)
+                expect(res.text).toContain("Redirecting to /user/AlreadyExists")
+                
+        })
+        .end(function(err, res) {          // Allways add these lines when using Supertest with Jasmine
+                if(err) {
+                    return done.fail(err)
+                }
+                
+                done()
+            });
+    })
+    
 });
+
+describe("GET /user/:username",() => {
+    
+    it("tests the route for retrieving a user page", function (done) {
+        agent.get("/user/"+Hashim.user.username)
+                .expect(function(res) {
+            //console.log("stuff",res);
+        })
+        .end(function(err, res) {          // Allways add these lines when using Supertest with Jasmine
+                if(err) {
+                    return done.fail(err)
+                }
+                
+                done()
+            });
+        
+    }); 
+})
 //
 //    it("tests that we user name should be unique", function(done) {
 //        agent.post("/people")
