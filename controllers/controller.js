@@ -29,11 +29,13 @@ router.post('/user/create', (req, res) => {
             "username": username,
             "name": req.body.name
         }
-        console.log(userObj);
+        
         var user=new User(userObj);
-        user.save((err, cb)=> {
-            if (err) return handleError(err)
-            console.log('user saved');
+        user.save((err, saved_user)=> {
+            if (err) {
+                return handleError(err)
+            }
+            console.log('user saved',saved_user);
             res.redirect('/user/'+username)
         });
 });
